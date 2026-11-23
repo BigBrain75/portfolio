@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MARAKUYA Studio</title>
+<meta name="description" content="MARAKUYA — разработка сайтов, софта, ботов и backend под ключ. Портфолио: PULSE, GiftSide, Relay, Кадр/24, Chat Load Tester.">
+<meta name="theme-color" content="#03050b">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="pl" id="pl" role="status" aria-label="Загрузка сайта">
+  <div class="pl-in">
+    <div class="pl-logo">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <defs><linearGradient id="plG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2ebff"/><stop offset=".45" stop-color="#5f93ff"/><stop offset="1" stop-color="#1e4fd8"/></linearGradient></defs>
+        <g class="pl-ring"><circle cx="60" cy="60" r="57" fill="none" stroke="#3d7bff" stroke-opacity=".55" stroke-width="1" stroke-dasharray="2 6"/></g>
+        <g class="pl-ring2"><circle cx="60" cy="60" r="49" fill="none" stroke="#5fd4ff" stroke-opacity=".6" stroke-width="1.6" stroke-dasharray="46 262" stroke-linecap="round"/></g>
+        <g class="pl-orbit"><ellipse cx="60" cy="62" rx="52" ry="20" fill="none" stroke="#5fd4ff" stroke-opacity=".85" stroke-width="1.8"/></g>
+        <g transform="translate(60 60) scale(2.25) translate(-19.3 -20)">
+          <path class="pl-m-fill" d="M7 31 12.2 9h5.6l2.6 9.4L26 9h5.6l-3.2 22h-5.3l1.7-11.4-4.9 8.6h-3.7l-2.3-8.4L12.3 31z" fill="url(#plG)"/>
+          <path class="pl-m-line" pathLength="260" d="M7 31 12.2 9h5.6l2.6 9.4L26 9h5.6l-3.2 22h-5.3l1.7-11.4-4.9 8.6h-3.7l-2.3-8.4L12.3 31z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="pl-word" aria-hidden="true"><span style="--i:0">M</span><span style="--i:1">A</span><span style="--i:2">R</span><span style="--i:3">A</span><span style="--i:4">K</span><span style="--i:5">U</span><span style="--i:6">Y</span><span style="--i:7">A</span></div>
+    <div class="pl-sub">cyber development studio</div>
+    <div class="pl-bar"><i id="plBar"></i></div>
+    <div class="pl-meta"><span id="plMsg">инициализация ядра</span><b id="plPct">0%</b></div>
+  </div>
+</div>
+<div class="bg-fallback" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-vig" aria-hidden="true"></div>
+<canvas id="bolts" aria-hidden="true"></canvas>
+<div class="glow" aria-hidden="true"></div>
+
+<div class="site">
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="MARAKUYA, наверх">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <defs><linearGradient id="lgM" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2ebff"/><stop offset=".45" stop-color="#5f93ff"/><stop offset="1" stop-color="#1e4fd8"/></linearGradient></defs>
+        <ellipse cx="20" cy="21" rx="18.5" ry="7.5" fill="none" stroke="#5fd4ff" stroke-opacity=".75" stroke-width="1.3" transform="rotate(-16 20 21)"/>
+        <path d="M7 31 12.2 9h5.6l2.6 9.4L26 9h5.6l-3.2 22h-5.3l1.7-11.4-4.9 8.6h-3.7l-2.3-8.4L12.3 31z" fill="url(#lgM)"/>
+      </svg>
+      <span>MARAKUYA<small>DEV STUDIO</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Разделы">
+      <a href="#work">Работы</a>
+      <a href="#services">Услуги</a>
+      <a href="#stack">Стек</a>
+      <a href="#process">Как работаю</a>
+      <a href="#brief">Заявка</a>
+    </nav>
+    <a class="btn btn-primary nav-cta mag" href="https://t.me/yeah_buddddy" target="_blank" rel="noopener">Заказать</a>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="status"><i></i>Принимаю заказы</span>
+      <span class="eyebrow">cyber development studio</span>
+    </div>
+    <h1 class="hero-title" id="heroTitle" aria-label="MARAKUYA"><span class="fill" id="heroWord" aria-hidden="true">MARAKUYA</span><span class="under" aria-hidden="true"></span></h1>
+
+    <div class="hero-grid">
+      <div>
+        <p class="typed" aria-live="off">Разрабатываю <span class="rot" id="rot">сайты</span><span class="caret" aria-hidden="true"></span></p>
+        <p class="lead">Цифровые решения с нуля под вашу задачу: от простого бота до полноценного веб-сервиса. Работаю по ТЗ, в срок и с гарантией. Вы получаете <b>готовый рабочий продукт и исходники</b>.</p>
+        <div class="ctas">
+          <a class="btn btn-primary mag" href="#work">Смотреть работы
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+          <a class="btn btn-ghost mag" href="https://t.me/yeah_buddddy" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.5l7 2.5 2.5 7L21 3z"/><path d="m10 13 4-4"/></svg>
+            @yeah_buddddy</a>
+        </div>
+      </div>
+      <div class="glass term rv">
+        <div class="win-h"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">marakuya@studio: ~/portfolio</span></div>
+        <div class="term-b" id="term" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b data-count="5">5</b><span>проектов в портфолио</span></div>
+      <div class="stat"><b data-count="4">4</b><span>направления: сайты, софт, боты, backend</span></div>
+      <div class="stat"><b data-count="500">500</b><span>чат-сессий одновременно на слабом VPS</span></div>
+      <div class="stat"><b data-count="100" data-suffix="%">100%</b><span>исходного кода передаётся заказчику</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true">
+  <div class="strip strip-b"><div class="track" id="trackB"><span>HTML · CSS · JS</span><span>Python</span><span>PHP 8</span><span>SQLite</span><span>Node.js</span><span>Telegram API</span><span>Docker</span><span>PostgreSQL</span></div></div>
+  <div class="strip strip-a"><div class="track" id="trackA"><span>Сайты</span><span>Софт</span><span>Боты</span><span>Backend</span><span>Админки</span><span>Магазины</span><span>Парсеры</span><span>API</span></div></div>
+</div>
+
+<!-- WORK -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <span class="eyebrow" data-scr>portfolio</span>
+        <h2 class="h2">Проекты, которые <em>уже работают</em></h2>
+      </div>
+      <div class="filters" role="group" aria-label="Фильтр проектов">
+        <button class="filter on" data-f="all" aria-pressed="true">Все <b></b></button>
+        <button class="filter" data-f="web" aria-pressed="false">Сайты <b></b></button>
+        <button class="filter" data-f="shop" aria-pressed="false">Магазины <b></b></button>
+        <button class="filter" data-f="backend" aria-pressed="false">Backend <b></b></button>
+        <button class="filter" data-f="tg" aria-pressed="false">Telegram <b></b></button>
+      </div>
+    </div>
+
+    <div class="cases" id="cases">
+      <!-- PULSE -->
+      <article class="case" data-tags="web shop">
+        <div class="case-media rv">
+          <div class="tilt">
+            <div class="browser" data-shots>
+              <div class="b-bar">
+                <span class="dots"><i></i><i></i><i></i></span>
+                <div class="b-url">pulse.store</div>
+                <div class="b-tabs" role="tablist" aria-label="Экраны PULSE">
+                  <button role="tab" data-url="pulse.store">Магазин</button>
+                  <button role="tab" data-url="pulse.store/admin.html">Админка</button>
+                </div>
+              </div>
+              <button class="b-view" type="button" aria-label="Открыть скриншот крупно">
+                <img src="img/pulse-store.jpg" alt="Главная страница магазина PULSE: «Двигайся дальше», кроссовки Velox Aero 3" width="1440" height="900">
+                <img src="img/pulse-admin.jpg" alt="Дашборд админки PULSE: выручка, заказы, средний чек, график по дням" width="1440" height="900" loading="lazy">
+                <span class="zoom">⤢ крупнее</span>
+                <span class="b-prog"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="case-text rv">
+          <div class="case-meta"><span class="case-name">PULSE</span><span class="badge">свой проект</span></div>
+          <h3>Интернет-магазин спортивных товаров с админ-панелью</h3>
+          <p>Полноценный магазин и админка, которые делят одни данные: поменяли цену в админке, и она сразу обновилась в открытой вкладке магазина.</p>
+          <ul class="feat">
+            <li>Каталог с 7 фильтрами, 6 видами сортировки и живым поиском с подсветкой</li>
+            <li>Корзина с промокодами, прогрессом до бесплатной доставки и отслеживанием заказа</li>
+            <li>Дашборд: выручка, средний чек, график по дням, топ товаров, экспорт CSV</li>
+          </ul>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">localStorage</span></div>
+          <button class="more" data-open="pulse">Подробнее о проекте <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </article>
+
+      <!-- GIFTSIDE -->
+      <article class="case flip" data-tags="web shop tg">
+        <div class="case-media rv">
+          <div class="tilt">
+            <div class="browser" data-shots>
+              <div class="b-bar">
+                <span class="dots"><i></i><i></i><i></i></span>
+                <div class="b-url">giftside.shop</div>
+                <div class="b-tabs" role="tablist" aria-label="Экраны GiftSide">
+                  <button role="tab" data-url="giftside.shop">Главная</button>
+                  <button role="tab" data-url="giftside.shop/#catalog">Каталог</button>
+                </div>
+              </div>
+              <button class="b-view" type="button" aria-label="Открыть скриншот крупно">
+                <img src="img/giftside-home.jpg" alt="Главная GiftSide: подарочные карты, подписки и пополнения зарубежных сервисов" width="1440" height="900" loading="lazy">
+                <img src="img/giftside-catalog.jpg" alt="Каталог GiftSide: Steam, PlayStation, Xbox, Spotify, ChatGPT Plus и другие сервисы" width="1440" height="900" loading="lazy">
+                <span class="zoom">⤢ крупнее</span>
+                <span class="b-prog"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="case-text rv">
+          <div class="case-meta"><span class="case-name">GIFTSIDE</span><span class="badge">заказ клиента</span></div>
+          <h3>Магазин подарочных карт и подписок зарубежных сервисов</h3>
+          <p>Витрина Steam, PlayStation, Xbox, Spotify, ChatGPT и других сервисов с оплатой в рублях. Код или пополнение приходит на почту и в Telegram.</p>
+          <ul class="feat">
+            <li>Каталог по категориям: игры, музыка, кино, нейросети, магазины приложений</li>
+            <li>Выбор номинала и региона, своя сумма пополнения с расчётом комиссии</li>
+            <li>Оформление и история заказов, вход и связка с Telegram-ботом</li>
+          </ul>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Telegram Login</span></div>
+          <button class="more" data-open="giftside">Подробнее о проекте <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </article>
+
+      <!-- RELAY -->
+      <article class="case" data-tags="backend tg">
+        <div class="case-media rv">
+          <div class="demo" id="relayDemo">
+            <div class="win-h"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">relay · панель управления</span><span class="tag">живое демо</span></div>
+            <div class="rl">
+              <div class="rl-link" id="rlLink">
+                <div class="rl-route">
+                  <span class="rl-short">go.your-short.com/<b>promo</b></span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <span class="rl-target" id="rlTarget">offer-alpha.com/?sub1=tg</span>
+                </div>
+                <div class="rl-act">
+                  <button class="mini" id="rlSwap" type="button">Сменить оффер</button>
+                  <button class="mini" id="rlPause" type="button" aria-pressed="false">Пауза</button>
+                </div>
+              </div>
+              <div class="rl-note" id="rlNote" aria-live="polite"></div>
+              <div class="rl-kpis">
+                <div class="kpi"><span>Переходов сегодня</span><b id="rlClicks">1 284</b></div>
+                <div class="kpi"><span>Живой трафик</span><b class="good" id="rlLive">78%</b></div>
+                <div class="kpi"><span>Отсечено ботов</span><b class="bad" id="rlBots">283</b></div>
+              </div>
+              <div class="rl-grid">
+                <div class="rl-chart"><div class="mini-h">Клики · 14 дней</div><div class="rl-bars" id="rlBars"></div></div>
+                <div><div class="mini-h">Журнал переходов</div><div class="rl-feed" id="rlFeed"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-text rv">
+          <div class="case-meta"><span class="case-name">RELAY</span><span class="badge">заказ клиента</span></div>
+          <h3>Сервис коротких ссылок на своём домене</h3>
+          <p>Трафик идёт через вашу короткую ссылку. Оффер заблокировали? Меняете URL в админке, ссылка продолжает работать, трафик не теряется. Нажмите «Сменить оффер» в демо слева.</p>
+          <ul class="feat">
+            <li>Фильтр ботов по User-Agent: краулеры, превью мессенджеров и headless-браузеры получают 404</li>
+            <li>Уведомления в Telegram о каждом переходе: гео, устройство, браузер, источник</li>
+            <li>Статистика за 14 дней, страны, устройства, журнал кликов с фильтрами</li>
+          </ul>
+          <div class="chips"><span class="chip">PHP 8</span><span class="chip">SQLite</span><span class="chip">Apache / nginx</span><span class="chip">Telegram Bot API</span></div>
+          <button class="more" data-open="relay">Подробнее о проекте <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </article>
+
+      <!-- KADR24 -->
+      <article class="case flip" data-tags="web">
+        <div class="case-media rv">
+          <div class="demo" id="cinemaDemo">
+            <div class="win-h"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">кадр/24 · выбор мест</span><span class="tag">живое демо</span></div>
+            <div class="cn">
+              <div class="cn-sess" id="cnSess" role="group" aria-label="Сеанс"></div>
+              <div class="cn-screen" aria-hidden="true"><span>экран</span></div>
+              <div class="cn-hall" id="cnHall" role="group" aria-label="Схема зала"></div>
+              <div class="cn-legend" aria-hidden="true">
+                <span><i class="seat"></i>свободно</span><span><i class="seat taken"></i>занято</span><span><i class="seat sel"></i>ваш выбор</span><span><i class="seat love"></i>диван для двоих</span>
+              </div>
+              <div class="cn-foot">
+                <div class="cn-sum"><b id="cnTotal">0 ₽</b><span id="cnPicked">Выберите места на схеме</span></div>
+                <label class="cn-pop"><input type="checkbox" id="cnPop"> Попкорн +390 ₽</label>
+                <button class="btn-sm" id="cnBuy" type="button" disabled>Купить билет</button>
+              </div>
+            </div>
+            <div class="ticket" id="cnTicket" hidden></div>
+          </div>
+        </div>
+        <div class="case-text rv">
+          <div class="case-meta"><span class="case-name">КАДР/24</span><span class="badge">веб-сервис</span></div>
+          <h3>Кинотеатр: расписание сеансов и онлайн-бронирование</h3>
+          <p>Путь зрителя от афиши до билета: выбрал сеанс, место в зале, добавил попкорн, оплатил. Попробуйте выбрать места в демо.</p>
+          <ul class="feat">
+            <li>Расписание с фильтрами и «Скоро в прокате» с подпиской «Жду премьеру»</li>
+            <li>Схема зала с занятыми местами и диванами для двоих, бар к заказу</li>
+            <li>«Мои билеты»: отмена брони или возврат билетов в один клик</li>
+          </ul>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">SPA</span></div>
+          <button class="more" data-open="kadr24">Подробнее о проекте <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </article>
+
+      <!-- LOADTEST -->
+      <article class="case" data-tags="backend tg">
+        <div class="case-media rv">
+          <div class="demo" id="ltDemo">
+            <div class="win-h"><span class="dots"><i></i><i></i><i></i></span><span class="ttl">chat-loadtest · python main.py --concurrency 500</span><span class="tag">симуляция</span></div>
+            <div class="lt">
+              <div class="lt-kpis">
+                <div class="kpi"><span>Активных сессий</span><b id="ltA">0</b></div>
+                <div class="kpi"><span>Создано</span><b id="ltC">0</b></div>
+                <div class="kpi"><span>Память RSS</span><b id="ltR">92<em>МБ</em></b></div>
+                <div class="kpi"><span>CPU</span><b id="ltU">0<em>%</em></b></div>
+              </div>
+              <div class="lt-chart"><canvas id="ltCanvas" role="img" aria-label="График активных сессий и потребления памяти"></canvas><div class="lt-leg"><span>сессии</span><span class="r">RSS</span></div></div>
+              <pre class="lt-log" id="ltLog" aria-hidden="true"></pre>
+              <div class="lt-ctrl">
+                <button class="btn-sm" id="ltRun" type="button">▶ Запустить</button>
+                <button class="btn-sm ghost" id="ltStop" type="button">Ctrl+C</button>
+                <span class="pill" id="ltState">ожидание</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-text rv">
+          <div class="case-meta"><span class="case-name">CHAT LOAD TESTER</span><span class="badge">python · asyncio</span></div>
+          <h3>Сотни параллельных чат-сессий на VPS с 1–2 ГБ памяти</h3>
+          <p>Асинхронный менеджер нагрузочного эксперимента против собственного mock-сервиса. В тесте держит 500 сессий ровно, память не растёт. Демо слева повторяет поведение по замерам из отчёта.</p>
+          <ul class="feat">
+            <li>Пул сессий с семафором, TokenBucket и backoff: закрылась одна, сразу встаёт новая</li>
+            <li>RSS 100–120 МБ без роста за счёт плановой сборки мусора, CPU 15–35 % одного ядра</li>
+            <li>Отчёты в Telegram с обработкой 429, /health и /stats, остановка по Ctrl+C меньше чем за секунду</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">asyncio</span><span class="chip">aiohttp</span><span class="chip">uvloop</span><span class="chip">Docker</span></div>
+          <button class="more" data-open="loadtest">Подробнее о проекте <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow" data-scr>services</span>
+      <h2 class="h2">Что разрабатываю</h2>
+      <p class="lead">Беру задачу целиком: от интерфейса до сервера и деплоя. Один исполнитель отвечает за весь продукт.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc rv">
+        <span class="num">web</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></div>
+        <h3>Web development</h3>
+        <p>Сайты, лендинги, интернет-магазины, веб-приложения, админ-панели.</p>
+        <ul><li>лендинги</li><li>магазины</li><li>админки</li></ul>
+      </article>
+      <article class="svc rv">
+        <span class="num">soft</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="11.5" rx="1.6"/><path d="M2 19.5h20M10 8.5l-2 1.75L10 12M14 8.5l2 1.75L14 12"/></svg></div>
+        <h3>Software</h3>
+        <p>Windows-программы, утилиты, парсеры, автоматизация рутины.</p>
+        <ul><li>парсеры</li><li>утилиты</li><li>автоматизация</li></ul>
+      </article>
+      <article class="svc rv">
+        <span class="num">bots</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l7 2.5 2.5 7L21 3z"/><path d="m10 13 4-4"/></svg></div>
+        <h3>Bots &amp; API</h3>
+        <p>Telegram- и Discord-боты, приём оплат, уведомления, интеграции с любыми API.</p>
+        <ul><li>Telegram</li><li>Discord</li><li>оплаты</li></ul>
+      </article>
+      <article class="svc rv">
+        <span class="num">server</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3.5" width="16" height="7.5" rx="1.6"/><rect x="4" y="13" width="16" height="7.5" rx="1.6"/><path d="M8 7.25h.01M8 16.75h.01M12 7.25h5M12 16.75h5"/></svg></div>
+        <h3>Backend</h3>
+        <p>Серверная логика, REST API, базы данных, деплой на сервер.</p>
+        <ul><li>REST API</li><li>базы данных</li><li>деплой</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="sec" id="stack">
+  <div class="wrap stack">
+    <div class="rv">
+      <span class="eyebrow" data-scr>technology stack</span>
+      <h2 class="h2">Инструменты, на&nbsp;которых <em>пишу</em></h2>
+      <p class="lead">Подбираю стек под задачу, а не задачу под стек. Лендингу не нужен Docker, а сервису на сотни соединений не подойдёт простой скрипт.</p>
+    </div>
+    <div class="stack-list">
+      <div class="srow rv"><h3>Frontend</h3><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Next.js</span></div></div>
+      <div class="srow rv"><h3>Backend</h3><div class="chips"><span class="chip">Python</span><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">PHP</span></div></div>
+      <div class="srow rv"><h3>Database</h3><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">SQLite</span></div></div>
+      <div class="srow rv"><h3>Tools</h3><div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Docker</span><span class="chip">Linux</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow" data-scr>how to order</span>
+      <h2 class="h2">Как заказать</h2>
+      <p class="lead">Напишите в Telegram и ответьте на четыре вопроса. Этого хватает, чтобы назвать сроки и цену.</p>
+    </div>
+    <div class="steps" id="steps">
+      <div class="steps-line" aria-hidden="true"><i id="stepsLine"></i></div>
+      <div class="step rv"><div class="step-n">01</div><h3>Что нужно разработать?</h3><p>Сайт, бот, программа или сервис. Опишите задачу своими словами.</p></div>
+      <div class="step rv"><div class="step-n">02</div><h3>Какой функционал нужен?</h3><p>Список функций и сценариев. Нет ТЗ, соберём его вместе.</p></div>
+      <div class="step rv"><div class="step-n">03</div><h3>Есть ли референсы?</h3><p>Ссылки на сайты или ботов, которые нравятся, и что в них нравится.</p></div>
+      <div class="step rv"><div class="step-n">04</div><h3>Сроки и бюджет</h3><p>Когда нужно запуститься и на какую сумму рассчитываете.</p></div>
+    </div>
+
+    <div class="glass terms rv">
+      <div>
+        <h3>Условия работы</h3>
+        <p>Всё фиксируется до старта, чтобы не было сюрпризов ни у вас, ни у меня.</p>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Предоплата <b>50%</b>, остаток после сдачи и проверки</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Можно работать <b>через гаранта форума</b></span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Сроки фиксируются до начала работы</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Исходный код</b> передаётся заказчику</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Бесплатные правки в рамках ТЗ после сдачи</span></li>
+        <li class="muted"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Незаконные проекты не рассматриваются</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BRIEF -->
+<section class="sec" id="brief">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow" data-scr>brief builder</span>
+      <h2 class="h2">Соберите заявку <em>за минуту</em></h2>
+      <p class="lead">Отметьте, что нужно, и опишите задачу. Справа сразу появится готовое сообщение: скопируйте его и отправьте в Telegram.</p>
+    </div>
+    <div class="brief">
+      <form class="glass brief-form rv" id="briefForm" novalidate>
+        <fieldset>
+          <legend>Что нужно разработать? <small>можно несколько</small></legend>
+          <div class="opts" id="bKinds">
+            <label class="opt"><input type="checkbox" id="k1" value="Сайт / лендинг"><span>Сайт / лендинг</span></label>
+            <label class="opt"><input type="checkbox" id="k2" value="Интернет-магазин"><span>Интернет-магазин</span></label>
+            <label class="opt"><input type="checkbox" id="k8" value="Веб-приложение"><span>Веб-приложение</span></label>
+            <label class="opt"><input type="checkbox" id="k9" value="Личный кабинет"><span>Личный кабинет</span></label>
+            <label class="opt"><input type="checkbox" id="k3" value="Админ-панель"><span>Админ-панель</span></label>
+            <label class="opt"><input type="checkbox" id="k4" value="Telegram-бот"><span>Telegram-бот</span></label>
+            <label class="opt"><input type="checkbox" id="k10" value="Telegram Mini App"><span>Telegram Mini App</span></label>
+            <label class="opt"><input type="checkbox" id="k5" value="Discord-бот"><span>Discord-бот</span></label>
+            <label class="opt"><input type="checkbox" id="k11" value="Приём оплат"><span>Приём оплат</span></label>
+            <label class="opt"><input type="checkbox" id="k6" value="Программа для Windows"><span>Программа для Windows</span></label>
+            <label class="opt"><input type="checkbox" id="k12" value="Парсер"><span>Парсер</span></label>
+            <label class="opt"><input type="checkbox" id="k13" value="Автоматизация рутины"><span>Автоматизация рутины</span></label>
+            <label class="opt"><input type="checkbox" id="k7" value="Backend / API"><span>Backend / API</span></label>
+            <label class="opt"><input type="checkbox" id="k14" value="Интеграция с API"><span>Интеграция с API</span></label>
+            <label class="opt"><input type="checkbox" id="k15" value="База данных"><span>База данных</span></label>
+            <label class="opt"><input type="checkbox" id="k16" value="Деплой на сервер"><span>Деплой на сервер</span></label>
+            <label class="opt"><input type="checkbox" id="k17" value="Доработка готового проекта"><span>Доработка готового проекта</span></label>
+            <label class="opt"><input type="checkbox" id="k18" value="Другое"><span>Другое</span></label>
+          </div>
+        </fieldset>
+        <label class="fld" for="bFunc"><span>Какой функционал нужен?</span>
+          <textarea id="bFunc" rows="4" placeholder="Например: каталог с фильтрами, корзина, оплата, админка для заказов"></textarea></label>
+        <label class="fld" for="bRef"><span>Референсы или примеры <small>необязательно</small></span>
+          <input id="bRef" type="text" placeholder="Ссылки на сайты или ботов, которые нравятся"></label>
+        <div class="fld-row">
+          <label class="fld" for="bTime"><span>Сроки</span>
+            <select id="bTime"><option value="">Обсудим</option><option>До недели</option><option>1–2 недели</option><option>2–4 недели</option><option>Больше месяца</option></select></label>
+          <label class="fld" for="bBudget"><span>Бюджет</span>
+            <input id="bBudget" type="text" inputmode="text" placeholder="Например, 30 000 ₽"></label>
+        </div>
+      </form>
+      <div class="brief-out rv">
+        <div class="glass tg">
+          <div class="tg-h"><div class="tg-ava" aria-hidden="true">M</div><div><b>Marakuya</b><span>@yeah_buddddy</span></div></div>
+          <div class="tg-body"><div class="bubble" id="bOut" data-time="00:00" aria-live="polite"></div></div>
+        </div>
+        <div class="brief-actions">
+          <button class="btn btn-ghost" id="bCopy" type="button">Скопировать</button>
+          <a class="btn btn-primary" id="bSend" href="https://t.me/yeah_buddddy" target="_blank" rel="noopener">Скопировать и открыть Telegram</a>
+        </div>
+        <p class="hint">Telegram откроется в новой вкладке. Вставьте заявку в чат с <code>@yeah_buddddy</code>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow" data-scr>contacts</span>
+      <h2 class="h2">Обсудим ваш проект?</h2>
+    </div>
+    <div class="contact">
+      <div class="glass cc rv">
+        <small>Telegram</small>
+        <h3>@yeah_buddddy</h3>
+        <p>Отвечаю на заявки лично. Пишите задачу, сроки и бюджет, вернусь с оценкой.</p>
+        <div class="row">
+          <a class="btn btn-primary mag" href="https://t.me/yeah_buddddy" target="_blank" rel="noopener">Написать</a>
+          <button class="btn btn-ghost" type="button" data-copy="@yeah_buddddy">Скопировать ник</button>
+        </div>
+      </div>
+      <div class="glass cc rv">
+        <small>Отзывы</small>
+        <h3>Что говорят клиенты</h3>
+        <p>Отзывы заказчиков собраны в моей прошлой теме на lolz.team.</p>
+        <div class="row">
+          <a class="btn btn-ghost mag" href="https://lolz.team/threads/10490999/" target="_blank" rel="noopener">Смотреть отзывы
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span class="foot-word" aria-hidden="true">MARAKUYA</span>
+    <div class="foot-bot">
+      <span><b>IDEAS INTO CODE.</b></span>
+      <span>Cyber Development Studio · 2026</span>
+      <a href="#top">Наверх ↑</a>
+    </div>
+  </div>
+</footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/utils.js"></script>
+<script src="js/background.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/portfolio.js"></script>
+<script src="js/demos.js"></script>
+<script src="js/brief.js"></script>
+</body>
+</html>
