@@ -772,8 +772,8 @@ html.loading .hero-title .under{animation-play-state:paused}
                 <span><i class="seat"></i>свободно</span><span><i class="seat taken"></i>занято</span><span><i class="seat sel"></i>ваш выбор</span><span><i class="seat love"></i>диван для двоих</span>
               </div>
               <div class="cn-foot">
-                <div class="cn-sum"><b id="cnTotal">0 ₽</b><span id="cnPicked">Выберите места на схеме</span></div>
-                <label class="cn-pop"><input type="checkbox" id="cnPop"> Попкорн +390 ₽</label>
+                <div class="cn-sum"><b id="cnTotal">$0</b><span id="cnPicked">Выберите места на схеме</span></div>
+                <label class="cn-pop"><input type="checkbox" id="cnPop"> Попкорн +$6</label>
                 <button class="btn-sm" id="cnBuy" type="button" disabled>Купить билет</button>
               </div>
             </div>
@@ -965,7 +965,7 @@ html.loading .hero-title .under{animation-play-state:paused}
           <label class="fld" for="bTime"><span>Сроки</span>
             <select id="bTime"><option value="">Обсудим</option><option>До недели</option><option>1–2 недели</option><option>2–4 недели</option><option>Больше месяца</option></select></label>
           <label class="fld" for="bBudget"><span>Бюджет</span>
-            <input id="bBudget" type="text" inputmode="text" placeholder="Например, 30 000 ₽"></label>
+            <input id="bBudget" type="text" inputmode="text" placeholder="Например, $500"></label>
         </div>
       </form>
       <div class="brief-out rv">
@@ -1657,7 +1657,7 @@ $$('[data-open]').forEach(b => b.addEventListener('click', () => { openOverlay(c
   const root = $('#cinemaDemo'); if (!root) return;
   const sessWrap = $('#cnSess'), hall = $('#cnHall'), totalEl = $('#cnTotal'), pickedEl = $('#cnPicked'), buy = $('#cnBuy'), pop = $('#cnPop'), ticket = $('#cnTicket');
   const S = [{f:'Орбита', t:'19:40', h:'Зал 2', seed:41},{f:'Код Ариадны', t:'21:15', h:'Зал 1', seed:97},{f:'Глубина 4000', t:'22:30', h:'Зал 3', seed:173}];
-  const ROWS = 6, SEATS = 12, LOVE = 5, P = 450, PL = 1100, POP = 390;
+  const ROWS = 6, SEATS = 12, LOVE = 5, P = 8, PL = 20, POP = 6;
   const taken = {}; let cur = 0; const sel = new Set();
   const rng = seed => () => (seed = (seed * 16807) % 2147483647, (seed - 1) / 2147483646);
   S.forEach((s, i) => {
@@ -1717,7 +1717,7 @@ $$('[data-open]').forEach(b => b.addEventListener('click', () => { openOverlay(c
   function price(){ let t = 0; sel.forEach(id => t += id[0] === 'L' ? PL : P); if (sel.size && pop.checked) t += POP; return t; }
   function sum(){
     const t = price();
-    totalEl.textContent = fmt(t) + ' ₽';
+    totalEl.textContent = '$' + fmt(t);
     if (!sel.size){ pickedEl.textContent = 'Выберите места на схеме'; buy.disabled = true; return; }
     const seats = [...sel].reduce((n, id) => n + (id[0] === 'L' ? 2 : 1), 0);
     pickedEl.textContent = `${seats} ${seats === 1 ? 'место' : seats < 5 ? 'места' : 'мест'} · ${describe()}`;
@@ -1734,7 +1734,7 @@ $$('[data-open]').forEach(b => b.addEventListener('click', () => { openOverlay(c
     ticket.innerHTML = `<div class="tk" role="document">
       <div class="tk-top"><small>Хорошего просмотра!</small><h4>${esc(s.f)}</h4><p>Сегодня, ${s.t} · ${s.h}</p><p>${esc(describe())}${pop.checked ? ' · попкорн' : ''}</p></div>
       <div class="tk-cut"></div>
-      <div class="tk-bot"><div class="qr" aria-hidden="true">${qr}</div><div><b>${code}</b>Итого ${fmt(price())} ₽<br>Билет в «Мои билеты»</div></div>
+      <div class="tk-bot"><div class="qr" aria-hidden="true">${qr}</div><div><b>${code}</b>Итого $${fmt(price())}<br>Билет в «Мои билеты»</div></div>
       <button class="btn-sm tk-btn" type="button" id="cnDone">Готово</button></div>`;
     ticket.hidden = false; $('#cnDone').focus();
     $('#cnDone').addEventListener('click', () => {

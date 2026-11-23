@@ -61,7 +61,7 @@
   const root = $('#cinemaDemo'); if (!root) return;
   const sessWrap = $('#cnSess'), hall = $('#cnHall'), totalEl = $('#cnTotal'), pickedEl = $('#cnPicked'), buy = $('#cnBuy'), pop = $('#cnPop'), ticket = $('#cnTicket');
   const S = [{f:'Орбита', t:'19:40', h:'Зал 2', seed:41},{f:'Код Ариадны', t:'21:15', h:'Зал 1', seed:97},{f:'Глубина 4000', t:'22:30', h:'Зал 3', seed:173}];
-  const ROWS = 6, SEATS = 12, LOVE = 5, P = 450, PL = 1100, POP = 390;
+  const ROWS = 6, SEATS = 12, LOVE = 5, P = 8, PL = 20, POP = 6;
   const taken = {}; let cur = 0; const sel = new Set();
   const rng = seed => () => (seed = (seed * 16807) % 2147483647, (seed - 1) / 2147483646);
   S.forEach((s, i) => {
@@ -121,7 +121,7 @@
   function price(){ let t = 0; sel.forEach(id => t += id[0] === 'L' ? PL : P); if (sel.size && pop.checked) t += POP; return t; }
   function sum(){
     const t = price();
-    totalEl.textContent = fmt(t) + ' ₽';
+    totalEl.textContent = '$' + fmt(t);
     if (!sel.size){ pickedEl.textContent = 'Выберите места на схеме'; buy.disabled = true; return; }
     const seats = [...sel].reduce((n, id) => n + (id[0] === 'L' ? 2 : 1), 0);
     pickedEl.textContent = `${seats} ${seats === 1 ? 'место' : seats < 5 ? 'места' : 'мест'} · ${describe()}`;
@@ -138,7 +138,7 @@
     ticket.innerHTML = `<div class="tk" role="document">
       <div class="tk-top"><small>Хорошего просмотра!</small><h4>${esc(s.f)}</h4><p>Сегодня, ${s.t} · ${s.h}</p><p>${esc(describe())}${pop.checked ? ' · попкорн' : ''}</p></div>
       <div class="tk-cut"></div>
-      <div class="tk-bot"><div class="qr" aria-hidden="true">${qr}</div><div><b>${code}</b>Итого ${fmt(price())} ₽<br>Билет в «Мои билеты»</div></div>
+      <div class="tk-bot"><div class="qr" aria-hidden="true">${qr}</div><div><b>${code}</b>Итого $${fmt(price())}<br>Билет в «Мои билеты»</div></div>
       <button class="btn-sm tk-btn" type="button" id="cnDone">Готово</button></div>`;
     ticket.hidden = false; $('#cnDone').focus();
     $('#cnDone').addEventListener('click', () => {
